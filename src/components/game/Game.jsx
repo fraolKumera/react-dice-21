@@ -2,40 +2,34 @@ import React, { useState } from "react";
 import GameResult from "./../gameResult/GameResult.jsx";
 // import ReactDom from "react-dom";
 import "./game.css";
-let disabled='';
+let disabled = "";
 function Game({ data }) {
   const [items, setItems] = useState([]);
   const [items2, setItems2] = useState([]);
 
   const addItem = () => {
-
     setItems([
       ...items,
       {
         id: items.length,
         value: Math.floor(Math.random() * 6) + 1,
-        
       },
     ]);
-    
-    disabled=0;
-    
+
+    disabled = 0;
   };
 
   const addItem2 = () => {
-
     setItems2([
       ...items2,
       {
         id2: items2.length,
         value2: Math.floor(Math.random() * 6) + 1,
-        
       },
     ]);
-    disabled=1;
-  
+    disabled = 1;
   };
-  console.log(disabled);
+//   console.log(disabled);
   const total = items.map((item) => item.value);
   const sum = total.reduce((a, b) => a + b, 0);
 
@@ -52,13 +46,17 @@ function Game({ data }) {
   let button;
 
   if (disabled === 1) {
-    button =    <button className="game-button" onClick={addItem}>
-    <img src="./dice-removebg-preview.png" alt="BitApps" />
-  </button>;
+    button = (
+      <button className="game-button" onClick={addItem}>
+        <img src="./dice-removebg-preview.png" alt="BitApps" />
+      </button>
+    );
   } else {
-    button =   <button className="game-button2" onClick={addItem2}>
-    <img src="./dice-removebg-preview.png" alt="BitApps" />
-  </button>;
+    button = (
+      <button className="game-button2" onClick={addItem2}>
+        <img src="./dice-removebg-preview.png" alt="BitApps" />
+      </button>
+    );
   }
 
   return (
@@ -88,7 +86,7 @@ function Game({ data }) {
             <li key={item.id2}>{item.value2}</li>
           ))}
         </ul>
-        <table cellpadding="1" cellspacing="1" border="1">
+        <table cellPadding="0" cellSpacing="1" border="1">
           <tbody>
             <tr>
               <td>Total:{sum}</td>
@@ -100,17 +98,9 @@ function Game({ data }) {
       <br />
       <br />
       <div>
-      
-      
-    
         {button}
 
         {/* {disabled === 0 ? 'player 1' : 'Player 2'} */}
-
-
-       
-
-      
       </div>
     </div>
 
